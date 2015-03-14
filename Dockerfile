@@ -5,7 +5,11 @@ RUN apt-get update
 # Install npm
 RUN apt-get install -y software-properties-common curl
 RUN curl -sL https://deb.nodesource.com/setup | bash -
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs git
+
+# Fetch latest tiddlywiki
+RUN git clone https://github.com/Jermolene/TiddlyWiki5.git
+RUN cd TiddlyWiki5 && npm link
 
 # Install tiddlywiki
 RUN npm install -g tiddlywiki
